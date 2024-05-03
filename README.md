@@ -20,3 +20,6 @@ Segua abaixo a lista dos materiais utilizados na construção do robô móvel:
 * x1 Bateria LiPo 1300 mAh 7.4V
 * x2 Protoboard 170 pontos
 * x1 Chave interruptora
+
+![Projeto do robô móvel com pinagem do Arduino. Os módulos dos motores estão re-
+presentados com os encoders ópticos acoplados.](images/robo_movel_sketch.png)
