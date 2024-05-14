@@ -398,6 +398,12 @@ Para que seja possível utilizar as implementações desenvolvidas neste projeto
 
 Outro passo importante é realizar a configuração inicial das portas de entrada e saída que, por padrão, são definidas no arquivo [robo_movel.h](robo_movel/robo_movel.h). Para isso, criou-se a função *setupConfig()* que tem por objetivo realizar a configuração inicial das portas conforme apresentado anterioremente. O arquivo [wallTracker.ino](robo_movel/examples/wallTracker/wallTracker.ino) é um exemplo de programa que realiza essa configuração inicial e executa a rotina *wallTracker()* citada anteriormente.
 
+### Teste do Protótipo
+
+O vídeo a seguir mostra os testes realizados do protótipo do robô móvel com o algoritmo de exemplo *wallTracker()*
+
+[![](https://markdown-videos-api.jorgenkh.no/youtube/dQw4w9WgXcQ)](https://youtu.be/dQw4w9WgXcQ)
+
 ### Referências
 
 * ALMEIDA, F. O que é Encoder? Para Que Serve? Como Escolher? Como Inter-facear? 2017. Disponível em: https://materiais.hitecnologia.com.br/blog/o-que-%C3%A9-encoder-para-que-serve-como-escolher-como-interfacear/. Acesso em: 10 jun. 2023.
