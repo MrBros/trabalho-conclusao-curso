@@ -1,16 +1,10 @@
 # Trabalho de Conclusão de Curso de Engenharia de Computação - Desenvolvimento Didático de um Robô Móvel Diferencial para o Ensino de Robótica
 
----
-
 ## Universidade Tecnológica Federal do Paraná, Campus de Pato Branco
 
----
+### Aluno: Mário Alexandre Rodrigues
 
-## Aluno: Mário Alexandre Rodrigues
-
-## Orientadores: Profa. Dra. Kathya Linares, Prof. Dr. Jefferson Lima
-
----
+### Orientadores: Profa. Dra. Kathya Linares, Prof. Dr. Jefferson Lima
 
 O presente trabalho tem como objetivo realizar e documentar o desenvolvimento de um robô móvel diferencial de forma que este seja utilizado por alunos iniciantes do curso de engenharia de computação como uma base para suas próprias implementações. O desenvolvimento do presente robô móvel conta com um algoritimo simples de desvio de obstáculos, bem como um conjunto de funções intermediárias que auxiliem no controle e obtenção dos dados dos sensores do robô.
 
@@ -81,7 +75,7 @@ Onde:
 * **OUT2**: Segunda saída digital do primeiro motor
 
 * **OUT3**: Primeira saída digital do segundo motor
-    
+
 * **OUT4**: Segunda saída digital do segundo motor
 
 * **VCC**: Alimentação do módulo
@@ -371,14 +365,87 @@ void loop() {
 Para que seja possível utilizar as implementações desenvolvidas neste projeto, basta apenas importar a pasta [robo_movel](robo_movel) na pasta que contém as bibliotecas do software Arduino IDE, por padrão:
 
 * Windows (32bits):
-    `C:/Program Files (x86)/Arduino/libraries`
+    `C:/"Program Files (x86)"/Arduino/libraries`
 
 * Windows (64bits):
-    `C:/Program Files/Arduino/libraries`
+    `C:/"Program Files"/Arduino/libraries`
 
 * Linux:
     `/home/Arduino/libraries`
 
-Outro passo importante é realizar a configuração inicial das portas de entrada e saída que, por padrão, são definidas no arquivo [robo_movel.h](robo_movel/robo_movel.h). Para isso, criou-se a função *setupConfig()* que tem por objetivo realizar a configuração inicial das portas conforme apresentado anterioremente. O arquivo [wallTracker.ino](robo_movel/examples/wallTracker/wallTracker.ino) é um exemplo de programa que realiza essa configuração inicial e executa a rotina *waalTracker* citada anteriormente.
+Outro passo importante é realizar a configuração inicial das portas de entrada e saída que, por padrão, são definidas no arquivo [robo_movel.h](robo_movel/robo_movel.h). Para isso, criou-se a função *setupConfig()* que tem por objetivo realizar a configuração inicial das portas conforme apresentado anterioremente. O arquivo [wallTracker.ino](robo_movel/examples/wallTracker/wallTracker.ino) é um exemplo de programa que realiza essa configuração inicial e executa a rotina *waalTracker()* citada anteriormente.
 
-### Considerações Finais
+### Referências
+
+* ALMEIDA, F. O que é Encoder? Para Que Serve? Como Escolher? Como Inter-
+facear? 2017. Disponível em: [https://materiais.hitecnologia.com.br/blog/o-que-%C3%
+A9-encoder-para-que-serve-como-escolher-como-interfacear/](https://materiais.hitecnologia.com.br/blog/o-que-%C3%
+A9-encoder-para-que-serve-como-escolher-como-interfacear/). Acesso em: 10 jun. 2023.
+
+* ARDUINO. Attachinterrupt. 2021. ARDUINO.CC. Disponível em: [https://www.arduino.cc/
+reference/pt/language/functions/external-interrupts/attachinterrupt/](https://www.arduino.cc/
+reference/pt/language/functions/external-interrupts/attachinterrupt/). Acesso em: 20 jan. 2024.
+BALBINOT, A. Instrumentação e Fundamentos de Medidas. Grupo GEN, 2019.
+
+* ISBN 9788521635888. Disponível em: [https://integrada.minhabiblioteca.com.br/#/books/
+9788521635888/](https://integrada.minhabiblioteca.com.br/#/books/
+9788521635888/). Acesso em: 10 jun. 2023.
+
+* BIESEK, L. J. Veículo autônomo: uma contribuição para estacionamento. 2016. Disponível
+em: [http://repositorio.utfpr.edu.br/jspui/handle/1/14618](http://repositorio.utfpr.edu.br/jspui/handle/1/14618). Acesso em: 10 jun. 2023.
+
+* CARBONERA, M. G. Navegação em robôs moveis por arbitragem e fusão em arquiteturas
+comportamentais. 2021. Disponível em: [http://repositorio.utfpr.edu.br/jspui/handle/1/28611](http://repositorio.utfpr.edu.br/jspui/handle/1/28611).
+Acesso em: 10 jun. 2023.
+
+* CARDOSO, M. O que é um Microcontrolador? 2020. IEE RAS UFCG. Disponível em:
+[https://edu.ieee.org/br-ufcgras/o-que-e-um-microcontrolador/](https://edu.ieee.org/br-ufcgras/o-que-e-um-microcontrolador/). Acesso em: 10 jun. 2023.
+
+* LIMA, J. J. de. Mobile Robots: Robots kinematics. Pato Branco, Brasil, 2023. Disponível em:
+[https://jeferson.aulas.gitlab.io/mobile-robotics/cinematica-aula.pdf](https://jeferson.aulas.gitlab.io/mobile-robotics/cinematica-aula.pdf). Acesso em: 23 jun. 2023.
+
+* MORAES, M. C. Informática Educativa no Brasil: um pouco de história... 1993. Disponível
+em: [https://repositorio.ucb.br:9443/jspui/bitstream/123456789/7727/1/Inform%C3%A1tica%
+20Educativa%20no%20Brasil%20um%20Pouco%20de%20Hist%C3%B3ria.pdf](https://repositorio.ucb.br:9443/jspui/bitstream/123456789/7727/1/Inform%C3%A1tica%
+20Educativa%20no%20Brasil%20um%20Pouco%20de%20Hist%C3%B3ria.pdf). Acesso em:
+10 jun. 2023.
+
+* PATSKO, L. F. Aplicações, Utiliação e Funcionamento de Sensores. Paraná, Brasil,
+2006. Disponível em: [https://www.maxwellbohr.com.br/downloads/robotica/mec1000_kdr5000/
+tutorial_eletronica_-_aplicacoes_e_funcionamento_de_sensores.pdf](https://www.maxwellbohr.com.br/downloads/robotica/mec1000_kdr5000/
+tutorial_eletronica_-_aplicacoes_e_funcionamento_de_sensores.pdf). Acesso em: 10 Jun.
+2023.
+
+* PATSKO, L. F. Tutorial - Montagem da Ponte H. Paraná, Brasil, 2006. Disponível em:
+[https://www.maxwellbohr.com.br/downloads/robotica/mec1000_kdr5000/tutorial_eletronica_-_
+montagem_de_uma_ponte_h.pdf](https://www.maxwellbohr.com.br/downloads/robotica/mec1000_kdr5000/tutorial_eletronica_-_
+montagem_de_uma_ponte_h.pdf). Acesso em: 10 jun. 2023.
+
+* RUBIO-TAMAYO, J. L.; JR., C. G.; HENRIQUES, R. Robótica para los procesos de enseñanza
+de la disciplina mecatrónica: Desarrollo del prototipo edubot v-2. In: III Congreso Internacional
+Sociedad Digital. Madrid, Espanha: [s.n.], 2014.
+
+* SASAKI, A. Estratégia de Desvio de Obstáculo para Navegação Autônoma de um Robô
+Móvel do Tipo Car-Like. 2012. Disponível em: [https://www3.dti.ufv.br/sig_del/consultar/
+download/149](https://www3.dti.ufv.br/sig_del/consultar/
+download/149). Acesso em: 03 jun. 2023.
+
+* SILVA, S. R. X. d. Protótipo de um robô móvel de baixo custo para uso interdisciplinar em
+cursos superiores de engenharia e computação. fev. 2016. 218 p. Dissertação (Mestrado)
+— Faculdade de Engenharia Mecatrônica, Universidade Federal da Bahia, Salvador, fev. 2016.
+Disponível em: [http://repositorio.ufba.br/ri/handle/ri/18614](http://repositorio.ufba.br/ri/handle/ri/18614). Acesso em: 10 jun. 2023.
+37
+
+* SILíCIO, V. de. Página Inicial - Loja Vida de Silício. 2023. Disponível em: https:
+//www.vidadesilicio.com.br/. Acesso em: 10 jun. 2023.
+WELTER, A. R. Aprendizado por reforço profundo para navegação de um veículo guiado
+automaticamente. 2022. Disponível em: [http://repositorio.utfpr.edu.br/jspui/handle/1/30617](http://repositorio.utfpr.edu.br/jspui/handle/1/30617).
+Acesso em: 10 jun. 2023.
+
+* ZAQUEU, A. C. M.; RAMOS, D. C.; NETTO, A. V. Curumim: A robótica educacional
+como proposta metodológica para o ensino. In: II Congresso Brasileiro de Informática
+na Educação (CBIE 2013). São Carlos, Brasil: [s.n.], 2014. Disponível em: [https:
+//www.researchgate.net/publication/299666251_Curumim_A_Robotica_Educacional_como_
+Proposta_Metodologica_para_o_Ensino](https:
+//www.researchgate.net/publication/299666251_Curumim_A_Robotica_Educacional_como_
+Proposta_Metodologica_para_o_Ensino). Acesso em: 14 jun. 2023.
