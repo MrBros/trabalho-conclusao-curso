@@ -98,7 +98,7 @@ os *encoders* ópticos, também conhecidos como sensores de deslocamento ou sens
 
 No modelo apresentado posteriormente, os *encoders* estão acoplados aos motores por se tratarem de peças dependentes. Já no protótipo do robô móvel, também apresentado posteriormente, estes sensores ópticos foram dispostos de forma que seja possível ler o disco perfurado o qual está acoplado às respectivas caixas de redução dos motores DC. Estes sensores possuem quatro pinos cada: dois de alimentação: VCC, GND; uma saída digital: D0; e uma saída analógica: A0.
 
-![*Encoder* Óptico](images/sensor_optico.png)
+![*Encoder* Óptico](images/chave_optica.png)
 
 ### 5 - Microcontrolador
 
@@ -375,7 +375,7 @@ Para que seja possível utilizar as implementações desenvolvidas neste projeto
 * Linux:
     `/home/Arduino/libraries`
 
-Outro passo importante é realizar a configuração inicial das portas de entrada e saída que, por padrão, são definidas no arquivo [robo_movel.h](robo_movel/robo_movel.h). Para isso, criou-se a função *setupConfig()* que tem por objetivo realizar a configuração inicial das portas conforme apresentado anterioremente. O arquivo [wallTracker.ino](robo_movel/examples/wallTracker/wallTracker.ino) é um exemplo de programa que realiza essa configuração inicial e executa a rotina *waalTracker()* citada anteriormente.
+Outro passo importante é realizar a configuração inicial das portas de entrada e saída que, por padrão, são definidas no arquivo [robo_movel.h](robo_movel/robo_movel.h). Para isso, criou-se a função *setupConfig()* que tem por objetivo realizar a configuração inicial das portas conforme apresentado anterioremente. O arquivo [wallTracker.ino](robo_movel/examples/wallTracker/wallTracker.ino) é um exemplo de programa que realiza essa configuração inicial e executa a rotina *wallTracker()* citada anteriormente.
 
 ### Referências
 
