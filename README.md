@@ -29,7 +29,7 @@ Segue abaixo a lista dos materiais utilizados na construção do robô móvel:
 * x2 Protoboard 170 pontos
 * x1 Chave interruptora
 
-Além dos materiais citados acima, o desenvolvimento do código foi realizado utilizando o programa ![Arduino IDE v2.3.2](https://www.arduino.cc/en/software).
+Além dos materiais citados acima, o desenvolvimento do código foi realizado utilizando o programa [Arduino IDE v2.3.2](https://www.arduino.cc/en/software).
 
 ## Desenvolvimento
 
@@ -100,21 +100,21 @@ A seguir o modelo esquemático é apresentado como um guia para a construção d
 
 ### Implementações de Código
 
-Nesta seção serão descritas as funções criadas para o funcionamento do robô móvel, assim como o algoritmo exemplo para desvio de obstáculos. Os respectivos códigos podem ser encontrados no arquivo robo_movel/robo_movel.cpp.
+Nesta seção serão descritas as funções criadas para o funcionamento do robô móvel, assim como o algoritmo exemplo para desvio de obstáculos. Os respectivos códigos podem ser encontrados no arquivo [robo_movel.cpp](robo_movel/robo_movel.cpp).
 
 #### Função *move()*
 
 A função *move* foi desenvolvida para para facilitar a configuração das portas de entrada do módulo ponte H para acionar os dois motores na mesma direção e com a mesma velocidade, fazendo assim que o robô móvel se movimente linearmente para frente ou para trás.
 
-##### Parâmetros de Entrada
+##### *Parâmetros de Entrada*
 
-* *direction*(char*): Determina em qual direção o robô irá se movimentar: "forward", para frente; "backward", para trás.
+* **direction**(char*): Determina em qual direção o robô irá se movimentar: "forward", para frente; "backward", para trás.
 
-##### Retorno
+##### *Retorno*
 
 Essa função não possui retorno.
 
-##### Exemplo de Utilização
+##### *Exemplo de Utilização*
 
 ```cpp
 void loop() {
@@ -127,19 +127,21 @@ void loop() {
 }
 ```
 
+---
+
 #### Função *stop()*
 
 Oposta à função *move*, a função *stop* realiza a parada dos dois motores DC.
 
-##### Parâmetros de Entrada
+##### *Parâmetros de Entrada*
 
 Essa função não possui parâmetros de entrada.
 
-##### Retorno
+##### *Retorno*
 
 Essa função não possui retorno.
 
-##### Exemplo de Utilização
+##### *Exemplo de Utilização*
 
 ```cpp
 void loop() {
@@ -154,3 +156,161 @@ void loop() {
     delay(1000);
 }
 ```
+
+---
+
+#### Função *rotate()*
+
+A função *rotate*, por sua vez, configura a saída da ponte H de modo a rotacionar o robô móvel tanto no sentido horário, quanto no sentido anti-horário.
+
+##### *Parâmetros de Entrada*
+
+* **direction**(char*): Define o sentido da rotação do robô: "clockwise", para sentido horário; "antiClockwise", para sentido anti-horário.
+
+* **milisec**(long): Determina o tempo, em milisegundos, que o robô irá rotacionar.
+
+##### *Retorno*
+
+Essa função não possui retorno.
+
+##### *Exemplo de Utilização*
+
+```cpp
+void loop() {
+    // Rotaciona o motor no sentido horário por 1 segundo
+    rotate("clockwise",1000);
+    // Rotaciona o motor no sentido anti-horário por 1 segundo
+    rotate("antiClockwise",1000);
+}
+```
+
+---
+
+O Arduino possibilita o monitoramento dos sinais enviados por esses sensores utilizando interrupções externas de borda nos pinos digitais, através do método [*attachInterrupt*](https://www.arduino.cc/reference/pt/language/functions/external-interrupts/attachinterrupt/). Esse método permite que, a cada interrupção de borda de subida ou descida em determinada porta de entrada do Arduino, uma função seja chamada. Para os *encoders*, essa função basta incrementar uma variável que armazene a quantidade sinais enviados.
+
+Uma vez que o microcontrolador armazena os sinais enviados pelos sensores através do monitoramento das interrupções de borda, é possível extrair as métricas relacionadas ao movimento do robô. Porém, por se tratarem de cálculos feitos com variáveis voláteis, que são alteradas de forma assíncrona pelas interrupções de borda, é necessário realizar uma pausa nessas interrupções antes de se efetuar o cálculo. As funções a seguir são exemplos de utilização do método [*detachInterrupt*](https://www.arduino.cc/reference/pt/language/functions/external-interrupts/detachinterrupt/), que permite realizar essa pausa.
+
+#### Função *getRightMotorRPM()*
+
+Obtém a velocidade de rotação do motor direito do robô, em RPM.
+
+##### *Parâmetros de Entrada*
+
+Essa função não possui parâmetros de entrada.
+
+##### *Retorno*
+
+* **rpm**(float): velocidade de rotação do motor, em RPM.
+
+##### *Exemplo de Utilização*
+
+```cpp
+void loop() {
+  Serial.print("RPM RIGHT MOTOR: ");
+  Serial.println(getRightMotorRPM());
+}
+```
+
+---
+
+#### Função *getLeftMotorRPM()*
+
+Obtém a velocidade de rotação do motor esquerdo do robô, em RPM.
+
+##### *Parâmetros de Entrada*
+
+Essa função não possui parâmetros de entrada.
+
+##### *Retorno*
+
+* **rpm**(float): velocidade de rotação do motor, em RPM.
+
+##### *Exemplo de Utilização*
+
+```cpp
+void loop() {
+  Serial.print("RPM LEFT MOTOR: ");
+  Serial.println(getLeftMotorRPM());
+}
+```
+
+---
+
+#### Função *getRightMotorDistance()*
+
+Permite a obtenção da distância absoluta percorrida pela roda direita do robô.
+
+##### *Parâmetros de Entrada*
+
+Essa função não possui parâmetros de entrada.
+
+##### *Retorno*
+
+* **distance**(float): distancia absoluta percorrida pela roda, em centímetros.
+
+##### *Exemplo de Utilização*
+
+```cpp
+void loop() {
+  Serial.print("DISTANCE RIGHT MOTOR: ");
+  Serial.print(getRightMotorDistance());
+  Serial.println(" CM");
+}
+```
+
+---
+
+#### Função *getLeftMotorDistance()*
+
+Permite a obtenção da distância absoluta percorrida pela roda esquerda do robô.
+
+##### *Parâmetros de Entrada*
+
+Essa função não possui parâmetros de entrada.
+
+##### *Retorno*
+
+* **distance**(float): distancia absoluta percorrida pela roda, em centímetros.
+
+##### *Exemplo de Utilização*
+
+```cpp
+void loop() {
+  Serial.print("DISTANCE LEFT MOTOR: ");
+  Serial.print(getLeftMotorDistance());
+  Serial.println(" CM");
+}
+```
+
+---
+
+O algoritmo de desvios de obstáculos simples, apelidado de *wallTracker*, foi desenvolvido buscando não apenas exemplificar o uso das funções citadas anteriormente, mas também demonstrar e avaliar a capacidade do sistema desenvolvido nesse projeto.
+
+O código é composto por uma lógica simples, mas eficaz, que realiza a conversão devida para não colidir com o obstáculo. O robô móvel monitora, utilizando o sensor de proximidade, a distância do obstáculo. Caso a distância seja maior a distância máxima predefinida, o robô seguirá em frente. Caso contrário, o robô realiza uma parada e, logo após, converge no sentido horário por um determinado tempo, de forma que rotacione aproximadamente 90º nesse sentido. Após isso, outra parada é realizada e o robô irá mensurar novamente a distância para o obstáculo. Caso essa distância seja menor que a distância máxima, o robô irá rotacionar no sentido anti-horário por aproximadamente o dobro do tempo da primeira rotação. Feito isso, o algoritmo irá se repetir. 
+
+Ademais, a cada repetição do algoritmo, as informações de movimentação, velocidade e distância percorrida são exibidas no monitor serial do Arduino.
+
+#### Função *wallTracker()*
+
+Algoritmo simples de desvio de obstáculos. Utilizado como exemplo de utilização das demais funções desenvolvidas.
+
+##### *Parâmetros de Entrada*
+
+Essa função não possui parâmetros de entrada.
+
+##### *Retorno*
+
+Essa função não possui retorno.
+
+##### *Exemplo de Utilização*
+
+```cpp
+void loop() {
+  wallTracker();
+}
+```
+
+### Instalação
+
+### Considerações Finais
+
