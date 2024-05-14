@@ -116,7 +116,22 @@ A seguir o modelo esquemático é apresentado como um guia para a construção d
 
 ![Esquemático do robô móvel com pinagem do Arduino.](images/robo_movel_sketch.png)
 
-![Mapeamento das portas do Arduino](images/arduino_map.png)
+Porta | Mapeamento | Módulo Mapeado | Modo de Configuração
+:------: | :------: | :------: | :------:
+D2 | D0 | Encoder direito | INPUT
+D3 | D0 | Encoder esquerdo | INPUT
+D5 | ENB | Ponte H L298N | OUTPUT 
+D6 | ENA | Ponte H L298N | OUTPUT
+D7 | IN4 | Ponte H L298N | OUTPUT
+D8 | IN3 | Ponte H L298N | OUTPUT
+D9 | IN2 | Ponte H L298N | OUTPUT
+D10 | IN1 | Ponte H L298N | OUTPUT
+D11 | Trig | Sensor Ultrassônico HC-SR04 | INPUT
+D12 | Echo | Sensor Ultrassônico HC-SR04 | INPUT
+A0 | A0 | Encoder esquerdo | N/A
+A1 | A0 | Encoder direito | N/A
+Vin | V+ | Bateria LiPo 7.4V 1300 mAh | N/A
+GND | V- | Bateria LiPo 7.4V 1300 mAh | N/A
 
 ### Implementações de Código
 
