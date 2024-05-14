@@ -35,6 +35,12 @@ Além dos materiais citados acima, o desenvolvimento do código foi realizado ut
 
 ## Desenvolvimento
 
+As figuras a seguir apresentam o diagrama básico de um robô móvel, com exemplos de componentes utilizados em cada módulo e o protótipo desenvolvido para esse projeto. Essa modulação irá nortear tanto o seccionamento deste capítulo, quanto o desenvolvimento de todo o projeto.
+
+![Dagrama básico de um robô móvel](images/diagrama_tcc.jpg)
+
+![Protótipo do robô móvel desenvolvido](images/prototipo.png)
+
 O primeiro passo para a construção do robô é entender como funcionam as peças, porque elas são necessárias e como são integradas ao projeto final. Portanto, seguem os detalhes das principais peças no contexto do robô móvel criado:
 
 ### 1 - Motor CC
