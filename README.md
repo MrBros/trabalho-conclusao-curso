@@ -54,7 +54,7 @@ Logo, para que o motor seja acionado, basta acionar um par de chaves diagonalmen
 
 O módulo Ponte H L298N é um módulo de controle de motor DC de dois canais. É composto por três pinos de alimentação; seis pinos de controle; e quatro pinos de saída. Esse módulo conta com duas entradas digitais para cada um dos motores DC (IN1, IN2 ou IN3, IN4) que possibilitam o controle do sentido de rotação desses motores através de sinais lógicos enviados pelo Arduino, assim como um pino de entrada adicional (ENA ou ENB) que permite controlar a velocidade de rotação dos mesmos, variando entre a tensão de entrada aplicada nas portas VCC e GND.
 
-![Módulo Ponte H L298N](images/l298n.png)
+![Módulo Ponte H L298N](images/l298n.jpg)
 
 Onde:
     *IN1: Primeira entrada digital do primeiro motor
@@ -178,17 +178,55 @@ Essa função não possui retorno.
 ```cpp
 void loop() {
     // Rotaciona o motor no sentido horário por 1 segundo
-    rotate("clockwise",1000);
+    rotate("clockwise", 1000);
     // Rotaciona o motor no sentido anti-horário por 1 segundo
-    rotate("antiClockwise",1000);
+    rotate("antiClockwise", 1000);
 }
 ```
 
 ---
 
-O Arduino possibilita o monitoramento dos sinais enviados por esses sensores utilizando interrupções externas de borda nos pinos digitais, através do método [*attachInterrupt*](https://www.arduino.cc/reference/pt/language/functions/external-interrupts/attachinterrupt/). Esse método permite que, a cada interrupção de borda de subida ou descida em determinada porta de entrada do Arduino, uma função seja chamada. Para os *encoders*, essa função basta incrementar uma variável que armazene a quantidade sinais enviados.
+O Arduino possibilita o monitoramento dos sinais enviados por esses sensores utilizando interrupções externas de borda nos pinos digitais, através do método [*attachInterrupt()*](https://www.arduino.cc/reference/pt/language/functions/external-interrupts/attachinterrupt/). Esse método permite que, a cada interrupção de borda de subida ou descida em determinada porta de entrada do Arduino, uma função seja chamada. Para os *encoders*, essa função basta incrementar uma variável que armazene a quantidade sinais enviados.
 
-Uma vez que o microcontrolador armazena os sinais enviados pelos sensores através do monitoramento das interrupções de borda, é possível extrair as métricas relacionadas ao movimento do robô. Porém, por se tratarem de cálculos feitos com variáveis voláteis, que são alteradas de forma assíncrona pelas interrupções de borda, é necessário realizar uma pausa nessas interrupções antes de se efetuar o cálculo. As funções a seguir são exemplos de utilização do método [*detachInterrupt*](https://www.arduino.cc/reference/pt/language/functions/external-interrupts/detachinterrupt/), que permite realizar essa pausa.
+#### Função *incrementRightCounter()*
+
+Função disparada pelo método *attachInterrupt()* para realizar a contagem de sinais de *clock* do *encoder* direito.
+A função incrementa uma variável desde que o robô é ativado e outra que tem sua contagem reiniciada a cada chamada da função *getRightMotorRPM()*. Além disso, a direção definida para o robô influencia no valor do acréscimo dessas variáveis: +1, quando o robô anda para frente; -1 quando o robô anda para trás e 0 quando o robô rotaciona.
+
+##### *Parâmetros de Entrada*
+
+Essa função não possui parâmetros de entrada.
+
+##### *Retorno*
+
+Essa função não possui retorno.
+
+##### *Exemplo de Utilização*
+
+Por se tratar de uma função auxiliar, essa função não possui exemplo de utilização.
+
+---
+
+#### Função *incrementLeftCounter()*
+
+Função disparada pelo método *attachInterrupt()* para realizar a contagem de sinais de *clock* do *encoder* esquerdo.
+A função incrementa uma variável desde que o robô é ativado e outra que tem sua contagem reiniciada a cada chamada da função *getLeftMotorRPM()*. Além disso, a direção definida para o robô influencia no valor do acréscimo dessas variáveis: +1, quando o robô anda para frente; -1 quando o robô anda para trás e 0 quando o robô rotaciona.
+
+##### *Parâmetros de Entrada*
+
+Essa função não possui parâmetros de entrada.
+
+##### *Retorno*
+
+Essa função não possui retorno.
+
+##### *Exemplo de Utilização*
+
+Por se tratar de uma função auxiliar, essa função não possui exemplo de utilização.
+
+---
+
+Uma vez que o microcontrolador armazena os sinais enviados pelos sensores através do monitoramento das interrupções de borda, é possível extrair as métricas relacionadas ao movimento do robô. Porém, por se tratarem de cálculos feitos com variáveis voláteis, que são alteradas de forma assíncrona pelas interrupções de borda, é necessário realizar uma pausa nessas interrupções antes de se efetuar o cálculo. As funções a seguir são exemplos de utilização do método [*detachInterrupt()*](https://www.arduino.cc/reference/pt/language/functions/external-interrupts/detachinterrupt/), que permite realizar essa pausa.
 
 #### Função *getRightMotorRPM()*
 
@@ -312,5 +350,15 @@ void loop() {
 
 ### Instalação
 
-### Considerações Finais
+Para que seja possível utilizar as implementações desenvolvidas neste projeto, basta apenas importar a pasta [robo_movel](robo_movel) na pasta que contém as bibliotecas do software Arduino IDE, por padrão:
 
+* Windows (32bits):
+    `C:/Program Files (x86)/Arduino/libraries`
+
+* Windows (64bits):
+    `C:/Program Files/Arduino/libraries`
+
+* Linux:
+    `/home/Arduino/libraries`
+
+Outro passo importante é realizar a configuração inicial das portas de entrada e saída que, por padrão, são definidas no arquivo [robo_movel.h](robo_movel/robo_movel.h). Para isso, criou-se a função *setupConfig()* que tem por objetivo realizar a configuração inicial das portas conforme apresentado anterioremente. O arquivo [wallTracker.ino](robo_movel/examples/wallTracker/wallTracker.ino) é um exemplo de programa que realiza essa configuração inicial e executa a rotina *waalTracker* citada anteriormente.
