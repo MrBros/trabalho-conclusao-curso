@@ -1,10 +1,16 @@
 # Trabalho de Conclusão de Curso de Engenharia de Computação - Desenvolvimento Didático de um Robô Móvel Diferencial para o Ensino de Robótica
 
-# Universidade Tecnológica Federal do Paraná, Campus de Pato Branco
+---
+
+## Universidade Tecnológica Federal do Paraná, Campus de Pato Branco
+
+---
 
 ## Aluno: Mário Alexandre Rodrigues
 
 ## Orientadores: Profa. Dra. Kathya Linares, Prof. Dr. Jefferson Lima
+
+---
 
 O presente trabalho tem como objetivo realizar e documentar o desenvolvimento de um robô móvel diferencial de forma que este seja utilizado por alunos iniciantes do curso de engenharia de computação como uma base para suas próprias implementações. O desenvolvimento do presente robô móvel conta com um algoritimo simples de desvio de obstáculos, bem como um conjunto de funções intermediárias que auxiliem no controle e obtenção dos dados dos sensores do robô.
 
@@ -57,18 +63,30 @@ O módulo Ponte H L298N é um módulo de controle de motor DC de dois canais. É
 ![Módulo Ponte H L298N](images/l298n.jpg)
 
 Onde:
-    *IN1: Primeira entrada digital do primeiro motor
-    *IN2: Segunda entrada digital do primeiro motor
-    *IN3: Primeira entrada digital do primeiro motor
-    *IN4: Segunda entrada digital do primeiro motor
-    *ENA: Regulador da tensão de saída do primeiro motor
-    *ENB: Regulador da tensão de saída do primeiro motor
-    *OUT1: Primeira saída digital do primeiro motor
-    *OUT2: Segunda saída digital do primeiro motor
-    *OUT3: Primeira saída digital do segundo motor
-    *OUT4: Segunda saída digital do segundo motor
-    *VCC: Alimentação do módulo
-    *GND: Alimentação do módulo
+
+* **IN1**: Primeira entrada digital do primeiro motor
+
+* **IN2**: Segunda entrada digital do primeiro motor
+
+* **IN3**: Primeira entrada digital do primeiro motor
+
+* **IN4**: Segunda entrada digital do primeiro motor
+
+* **ENA**: Regulador da tensão de saída do primeiro motor
+
+* **ENB**: Regulador da tensão de saída do primeiro motor
+
+* **OUT1**: Primeira saída digital do primeiro motor
+
+* **OUT2**: Segunda saída digital do primeiro motor
+
+* **OUT3**: Primeira saída digital do segundo motor
+    
+* **OUT4**: Segunda saída digital do segundo motor
+
+* **VCC**: Alimentação do módulo
+
+* **GND**: Alimentação do módulo
 
 ### 3 - Sensor de Ultrassom
 
@@ -362,3 +380,5 @@ Para que seja possível utilizar as implementações desenvolvidas neste projeto
     `/home/Arduino/libraries`
 
 Outro passo importante é realizar a configuração inicial das portas de entrada e saída que, por padrão, são definidas no arquivo [robo_movel.h](robo_movel/robo_movel.h). Para isso, criou-se a função *setupConfig()* que tem por objetivo realizar a configuração inicial das portas conforme apresentado anterioremente. O arquivo [wallTracker.ino](robo_movel/examples/wallTracker/wallTracker.ino) é um exemplo de programa que realiza essa configuração inicial e executa a rotina *waalTracker* citada anteriormente.
+
+### Considerações Finais
