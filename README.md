@@ -39,7 +39,7 @@ As figuras a seguir apresentam o diagrama básico de um robô móvel, com exempl
 
 ![Dagrama básico de um robô móvel](images/diagrama_tcc.jpg)
 
-![Protótipo do robô móvel desenvolvido](images/prototipo.png)
+![Protótipo do robô móvel desenvolvido](images/robo_montado_3.jpg)
 
 O primeiro passo para a construção do robô é entender como funcionam as peças, porque elas são necessárias e como são integradas ao projeto final. Portanto, seguem os detalhes das principais peças no contexto do robô móvel criado:
 
