@@ -163,19 +163,6 @@ void wallTracker() {
     }
   }
   delay(100);
-
-
-  Serial.print("RIGHT MOTOR:");
-  Serial.print(getRightMotorRPM());
-  Serial.print(" RPM - ");
-  Serial.print(getRightMotorDistance());
-  Serial.println(" cm");
-
-  Serial.print("LEFT MOTOR:");
-  Serial.print(getLeftMotorRPM());
-  Serial.print(" RPM - ");
-  Serial.print(getLeftMotorDistance());
-  Serial.println(" cm");
 }
 
 float getRightMotorRPM() {
