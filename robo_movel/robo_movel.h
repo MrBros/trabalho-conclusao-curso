@@ -32,22 +32,20 @@
 #define MAX_PWM_VALUE 255
 #define TGT_PWM_VALUE 255
 
-#define R 3.2
-#define L 15.3
+#define R 3.20
+#define L 15.00
 
 void incrementLeftCounter();
 
 void incrementRightCounter();
 
-void move(char* direction);
+void setupConfig(long serialRate);
 
-void rotate(char* direction, long millisec);
+void move(char* direction);
 
 void stop();
 
-void setupConfig(long serialRate);
-
-void wallTracker();
+void rotate(char* direction, char* pivot, float ang);
 
 float getRightMotorRPM();
 
@@ -56,5 +54,7 @@ float getLeftMotorRPM();
 float getRightMotorDistance();
 
 float getLeftMotorDistance();
+
+void wallTracker();
 
 #endif
