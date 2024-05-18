@@ -62,7 +62,7 @@ Logo, para que o motor seja acionado, basta acionar um par de chaves diagonalmen
 
 O módulo Ponte H L298N é um módulo de controle de motor DC de dois canais. É composto por três pinos de alimentação; seis pinos de controle; e quatro pinos de saída. Esse módulo conta com duas entradas digitais para cada um dos motores DC (IN1, IN2 ou IN3, IN4) que possibilitam o controle do sentido de rotação desses motores através de sinais lógicos enviados pelo Arduino, assim como um pino de entrada adicional (ENA ou ENB) que permite controlar a velocidade de rotação dos mesmos, variando entre a tensão de entrada aplicada nas portas VCC e GND.
 
-![Módulo Ponte H L298N](images/l298n.jpg)
+![Módulo Ponte H L298N](images/l298n_2.jpg)
 
 Onde:
 
