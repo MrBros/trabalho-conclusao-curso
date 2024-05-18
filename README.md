@@ -25,7 +25,7 @@ Segue abaixo a lista dos materiais utilizados na construção do robô móvel:
 * x2 Encoder óptico – Chave Óptica
 * x2 Disco Encoder 20 Dentes
 * x2 Motor CC com caixa de redução
-* x1 Roda omni-direcional
+* x1 Roda omnidirecional
 * x2 Roda Hobby com pneu
 * x1 Bateria LiPo 1300 mAh 7.4V
 * x2 Protoboard 170 pontos
