@@ -8,15 +8,21 @@ void setup() {
 void loop() {
   wallTracker();
   
-  Serial.print("RIGHT MOTOR:");
+  // Motor direito
+  Serial.println("\n=== MOTOR DIREITO ===\n");
+  Serial.print("VELOCIDADE: ");
   Serial.print(getRightMotorRPM());
-  Serial.print(" RPM - ");
+  Serial.println(" RPM");
+  Serial.print("DISTANCIA PERCORRIDA: ");
   Serial.print(getRightMotorDistance());
   Serial.println(" cm");
 
-  Serial.print("LEFT MOTOR:");
+  // Motor esquerdo
+  Serial.println("\n=== MOTOR ESQUERDO ===\n");
+  Serial.print("VALOCIDADE: ");
   Serial.print(getLeftMotorRPM());
-  Serial.print(" RPM - ");
+  Serial.println(" RPM");
+  Serial.print("DISTANCIA PERCORRIDA: ");
   Serial.print(getLeftMotorDistance());
   Serial.println(" cm");
 }
