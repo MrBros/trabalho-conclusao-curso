@@ -4,7 +4,7 @@
 
 ### Aluno: Mário Alexandre Rodrigues
 
-### Orientadores: Profa. Dra. Kathya Linares, Prof. Dr. Jefferson Lima
+### Orientadores: Profa. Dra. Kathya Linares, Prof. Dr. Jeferson Lima
 
 ---
 
