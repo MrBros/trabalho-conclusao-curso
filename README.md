@@ -47,7 +47,7 @@ O primeiro passo para a construção do robô é entender como funcionam as peç
 
 Os motores de corrente contínua (CC) são sensores que transformam energia elétrica em energia mecânica. Também conhecidos como atuadores, os motores DC são os componentes que possibilitam o movimento do robô móvel. Eles podem ser acionados tanto em um sentido quanto em outro, possibilitando o movimento do robô tanto para frente quanto para trás.
 
-![Motores DC](images/motores.png)
+![Motores CC](images/motores.png)
 
 ### 2 - Ponte H
 
@@ -135,7 +135,69 @@ GND | V- | Bateria LiPo 7.4V 1300 mAh | N/A
 
 ### Implementações de Código
 
-Nesta seção serão descritas as funções criadas para o funcionamento do robô móvel, assim como o algoritmo exemplo para desvio de obstáculos. Os respectivos códigos podem ser encontrados no arquivo [robo_movel.cpp](robo_movel/robo_movel.cpp).
+Nesta seção serão descritas as funções criadas para o funcionamento do robô móvel, assim como o algoritmo exemplo para desvio de obstáculos. Os respectivos códigos podem ser encontrados no arquivo [robo_movel.cpp](robo_movel/robo_movel.cpp). Para mais detalhes sobre as implementações dessas funções, consulte o documento [Monografia.pdf](Monografia.pdf)
+
+O Arduino possibilita o monitoramento dos sinais enviados por esses sensores utilizando interrupções externas de borda nos pinos digitais, através do método [*attachInterrupt()*](https://www.arduino.cc/reference/pt/language/functions/external-interrupts/attachinterrupt/). Esse método permite que, a cada interrupção de borda de subida ou descida em determinada porta de entrada do Arduino, uma função seja chamada. No caso dos *encoders*, essa função basta incrementar uma variável que armazene a quantidade sinais enviados.
+
+#### Função *incrementRightCounter()*
+
+Função disparada pelo método *attachInterrupt()* para realizar a contagem de sinais de *clock* do *encoder* direito.
+A função incrementa variáveis globais que são utilizadas pelas demais funções para cálculos das métricas inerentes ao motor.
+
+##### *Parâmetros de Entrada*
+
+Essa função não possui parâmetros de entrada.
+
+##### *Retorno*
+
+Essa função não possui retorno.
+
+##### *Exemplo de Utilização*
+
+Por se tratar de uma função auxiliar, essa função não possui exemplo de utilização.
+
+---
+
+#### Função *incrementLeftCounter()*
+
+Função disparada pelo método *attachInterrupt()* para realizar a contagem de sinais de *clock* do *encoder* esquerdo.
+A função incrementa variáveis globais que são utilizadas pelas demais funções para cálculos das métricas inerentes ao motor.
+
+##### *Parâmetros de Entrada*
+
+Essa função não possui parâmetros de entrada.
+
+##### *Retorno*
+
+Essa função não possui retorno.
+
+##### *Exemplo de Utilização*
+
+Por se tratar de uma função auxiliar, essa função não possui exemplo de utilização.
+
+---
+#### Função *setupConfig()*
+
+Essa função tem como objetivo realizar a configuração inicial das portas do Arduino, valores iniciais das variáveis globais, inicializar a comunicação serial do microcontrolador e ativar as interrupções de borda dos encoders
+
+##### *Parâmetros de Entrada*
+
+* **serialRate**(long): . Determina a frequência da comunicação serial do Arduino.
+
+##### *Retorno*
+
+Essa função não possui retorno.
+
+##### *Exemplo de Utilização*
+
+```cpp
+void setup() {
+    // Realiza a configuração inicial do sistema
+    setupConfig(115200);
+}
+```
+
+---
 
 #### Função *move()*
 
@@ -166,7 +228,7 @@ void loop() {
 
 #### Função *stop()*
 
-Oposta à função *move*, a função *stop* realiza a parada dos dois motores DC.
+Oposta à função *move*, a função *stop* realiza a parada dos dois motores CC.
 
 ##### *Parâmetros de Entrada*
 
@@ -202,7 +264,9 @@ A função *rotate*, por sua vez, configura a saída da ponte H de modo a rotaci
 
 * **direction**(char*): Define o sentido da rotação do robô: "clockwise", para sentido horário; "antiClockwise", para sentido anti-horário.
 
-* **milisec**(long): Determina o tempo, em milisegundos, que o robô irá rotacionar.
+* **pivot**(char*): Determina o tempo, em milisegundos, que o robô irá rotacionar.
+  
+* **ang**(long): 
 
 ##### *Retorno*
 
@@ -212,52 +276,14 @@ Essa função não possui retorno.
 
 ```cpp
 void loop() {
-    // Rotaciona o motor no sentido horário por 1 segundo
-    rotate("clockwise", 1000);
-    // Rotaciona o motor no sentido anti-horário por 1 segundo
-    rotate("antiClockwise", 1000);
+    // Rotaciona o robô 90º no sentido horário com o ponto fixo na roda direita do robô
+    rotate("clockwise", "right", 90);
+    // Rotaciona o robô 90º no sentido horário com o ponto fixo na roda essquerda do robô
+    rotate("clockwise", "left", 90);
+    // Rotaciona o robô 90º no sentido anti-horário com o ponto fixo no centro do eixo virtual do robô
+    rotate("antiClockwise", "center", 180);
 }
 ```
-
----
-
-O Arduino possibilita o monitoramento dos sinais enviados por esses sensores utilizando interrupções externas de borda nos pinos digitais, através do método [*attachInterrupt()*](https://www.arduino.cc/reference/pt/language/functions/external-interrupts/attachinterrupt/). Esse método permite que, a cada interrupção de borda de subida ou descida em determinada porta de entrada do Arduino, uma função seja chamada. Para os *encoders*, essa função basta incrementar uma variável que armazene a quantidade sinais enviados.
-
-#### Função *incrementRightCounter()*
-
-Função disparada pelo método *attachInterrupt()* para realizar a contagem de sinais de *clock* do *encoder* direito.
-A função incrementa uma variável desde que o robô é ativado e outra que tem sua contagem reiniciada a cada chamada da função *getRightMotorRPM()*. Além disso, a direção definida para o robô influencia no valor do acréscimo dessas variáveis: +1, quando o robô anda para frente; -1 quando o robô anda para trás e 0 quando o robô rotaciona.
-
-##### *Parâmetros de Entrada*
-
-Essa função não possui parâmetros de entrada.
-
-##### *Retorno*
-
-Essa função não possui retorno.
-
-##### *Exemplo de Utilização*
-
-Por se tratar de uma função auxiliar, essa função não possui exemplo de utilização.
-
----
-
-#### Função *incrementLeftCounter()*
-
-Função disparada pelo método *attachInterrupt()* para realizar a contagem de sinais de *clock* do *encoder* esquerdo.
-A função incrementa uma variável desde que o robô é ativado e outra que tem sua contagem reiniciada a cada chamada da função *getLeftMotorRPM()*. Além disso, a direção definida para o robô influencia no valor do acréscimo dessas variáveis: +1, quando o robô anda para frente; -1 quando o robô anda para trás e 0 quando o robô rotaciona.
-
-##### *Parâmetros de Entrada*
-
-Essa função não possui parâmetros de entrada.
-
-##### *Retorno*
-
-Essa função não possui retorno.
-
-##### *Exemplo de Utilização*
-
-Por se tratar de uma função auxiliar, essa função não possui exemplo de utilização.
 
 ---
 
@@ -384,19 +410,20 @@ void loop() {
 ```
 
 ### Instalação
+Para que seja possível utilizar o código desenvolvido, é necessário importá-lo na pasta de biblioteca do programa [Arduino IDE](https://www.arduino.cc/en/software). Essa pasta se encontra nos seguintes caminhos, dado o sistema operacional, por
+padrão:
 
-Para que seja possível utilizar as implementações desenvolvidas neste projeto, basta apenas importar a pasta [robo_movel](robo_movel) na pasta que contém as bibliotecas do software Arduino IDE, por padrão:
-
-* Windows (32bits):
-    `C:/"Program Files (x86)"/Arduino/libraries`
-
-* Windows (64bits):
-    `C:/"Program Files"/Arduino/libraries`
-
+* Windows 32 *bits*:
+  `C:/"Program Files (x86)"/Arduino/libraries`
+* Windows 64 *bits*:
+  `C:/"Program Files"/Arduino/libraries`
 * Linux:
-    `/home/Arduino/libraries`
+  `/home/Arduino/libraries`
+  
+Uma vez importada a biblioteca, será possível acessar a implementação do algoritmo *wallTracker()* através do menu de exemplos das bibliotecas da IDE, como mostra a figura a seguir.
+Ao realizar esse procedimento, a biblioteca ficará disponível para ser utilizada em qualquer projeto, necessitando apenas importá-la no documento do mesmo.
 
-Outro passo importante é realizar a configuração inicial das portas de entrada e saída que, por padrão, são definidas no arquivo [robo_movel.h](robo_movel/robo_movel.h). Para isso, criou-se a função *setupConfig()* que tem por objetivo realizar a configuração inicial das portas conforme apresentado anterioremente. O arquivo [wallTracker.ino](robo_movel/examples/wallTracker/wallTracker.ino) é um exemplo de programa que realiza essa configuração inicial e executa a rotina *wallTracker()* citada anteriormente.
+![Acesso aos algoritmos exemplos desenvolvidos no Arduino IDE](images/examples.png)
 
 ### Teste do Protótipo
 
@@ -408,9 +435,7 @@ O vídeo a seguir mostra os testes realizados do protótipo do robô móvel com 
 
 * ALMEIDA, F. O que é Encoder? Para Que Serve? Como Escolher? Como Inter-facear? 2017. Disponível em: https://materiais.hitecnologia.com.br/blog/o-que-%C3%A9-encoder-para-que-serve-como-escolher-como-interfacear/. Acesso em: 10 jun. 2023.
 
-* ARDUINO. Attachinterrupt. 2021. ARDUINO.CC. Disponível em: https://www.arduino.cc/reference/pt/language/functions/external-interrupts/attachinterrupt/. Acesso em: 20 jan. 2024. 
-
-* BALBINOT, A. Instrumentação e Fundamentos de Medidas. Grupo GEN, 2019. ISBN 9788521635888. Disponível em: https://integrada.minhabiblioteca.com.br/#/books/9788521635888/. Acesso em: 10 jun. 2023.
+* BALBINOT, A. Instrumentação e Fundamentos de Medidas. Grupo GEN, 2019.ISBN 9788521635888. Disponível em: https://integrada.minhabiblioteca.com.br/#/books/9788521635888/. Acesso em: 10 jun. 2023.
 
 * BIESEK, L. J. Veículo autônomo: uma contribuição para estacionamento. 2016. Disponível em: http://repositorio.utfpr.edu.br/jspui/handle/1/14618. Acesso em: 10 jun. 2023.
 
@@ -422,6 +447,8 @@ O vídeo a seguir mostra os testes realizados do protótipo do robô móvel com 
 
 * MORAES, M. C. Informática Educativa no Brasil: um pouco de história... 1993. Disponível em: https://repositorio.ucb.br:9443/jspui/bitstream/123456789/7727/1/Inform%C3%A1tica%20Educativa%20no%20Brasil%20um%20Pouco%20de%20Hist%C3%B3ria.pdf. Acesso em: 10 jun. 2023.
 
+* NERY, G. Guia Definitivo de uso da Ponte H L298N. 2022. Blog Eletrogate. Disponível em: https://blog.eletrogate.com/guia-definitivo-de-uso-da-ponte-h-l298n/. Acesso em: 10 jan. 2024.
+
 * PATSKO, L. F. Aplicações, Utiliação e Funcionamento de Sensores. Paraná, Brasil, 2006. Disponível em: https://www.maxwellbohr.com.br/downloads/robotica/mec1000_kdr5000/tutorial_eletronica_-_aplicacoes_e_funcionamento_de_sensores.pdf. Acesso em: 10 Jun. 2023.
 
 * PATSKO, L. F. Tutorial - Montagem da Ponte H. Paraná, Brasil, 2006. Disponível em: https://www.maxwellbohr.com.br/downloads/robotica/mec1000_kdr5000/tutorial_eletronica_-_montagem_de_uma_ponte_h.pdf. Acesso em: 10 jun. 2023.
@@ -430,10 +457,15 @@ O vídeo a seguir mostra os testes realizados do protótipo do robô móvel com 
 
 * SASAKI, A. Estratégia de Desvio de Obstáculo para Navegação Autônoma de um Robô Móvel do Tipo Car-Like. 2012. Disponível em: https://www3.dti.ufv.br/sig_del/consultar/download/149. Acesso em: 03 jun. 2023.
 
-* SILVA, S. R. X. d. Protótipo de um robô móvel de baixo custo para uso interdisciplinar em cursos superiores de engenharia e computação. fev. 2016. 218 p. Dissertação (Mestrado) — Faculdade de Engenharia Mecatrônica, Universidade Federal da Bahia, Salvador, fev. 2016. Disponível em: http://repositorio.ufba.br/ri/handle/ri/18614. Acesso em: 10 jun. 2023.
+* SCHULTZ, G. Interrupção: O que é e Como Utilizar no Arduino. 2022. Blog Eletrogate.Disponível em: https://blog.eletrogate.com/interrupcao-o-que-e-como-utilizar-arduin/. Acessoem: 10 Mai. 2024.
 
-* SILíCIO, V. de. Página Inicial - Loja Vida de Silício. 2023. Disponível em: https://www.vidadesilicio.com.br/. Acesso em: 10 jun. 2023. 
+* SILVA, S. R. X. d. Protótipo de um robô móvel de baixo custo para uso interdisciplinar em cursos superiores de engenharia e computação. fev. 2016. 218 p. Dissertação (Mestrado) — Faculdade de Engenharia Mecatrônica, Universidade Federal da Bahia, Salvador, Fev. 2016.Disponível em: http://repositorio.ufba.br/ri/handle/ri/18614. Acesso em: 10 jun. 2023.
+
+* SILíCIO, V. de. Página Inicial - Loja Vida de Silício. 2023. Disponível em: https://www.vidadesilicio.com.br/. Acesso em: 10 jun. 2023.
+
+* VIDAL, V. O que é Arduino: Afinal, para que Serve o Arduino? 2024. Blog Eletrogate. Disponível em: https://blog.eletrogate.com/arduino-primeiros-passos/. Acesso em: 12 mar. 2024.
 
 * WELTER, A. R. Aprendizado por reforço profundo para navegação de um veículo guiado automaticamente. 2022. Disponível em: http://repositorio.utfpr.edu.br/jspui/handle/1/30617. Acesso em: 10 jun. 2023.
 
 * ZAQUEU, A. C. M.; RAMOS, D. C.; NETTO, A. V. Curumim: A robótica educacional como proposta metodológica para o ensino. In: II Congresso Brasileiro de Informática na Educação (CBIE 2013). São Carlos, Brasil: [s.n.], 2014. Disponível em: https://www.researchgate.net/publication/299666251_Curumim_A_Robotica_Educacional_como_Proposta_Metodologica_para_o_Ensino. Acesso em: 14 jun. 2023.
+
