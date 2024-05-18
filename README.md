@@ -201,7 +201,7 @@ void setup() {
 
 #### Função *move()*
 
-A função *move* foi desenvolvida para para facilitar a configuração das portas de entrada do módulo ponte H para acionar os dois motores na mesma direção e com a mesma velocidade, fazendo assim que o robô móvel se movimente linearmente para frente ou para trás.
+A função *move()* foi desenvolvida para para facilitar a configuração das portas de entrada do módulo ponte H para acionar os dois motores na mesma direção e com a mesma velocidade, fazendo assim que o robô móvel se movimente linearmente para frente ou para trás.
 
 ##### *Parâmetros de Entrada*
 
@@ -228,7 +228,7 @@ void loop() {
 
 #### Função *stop()*
 
-Oposta à função *move*, a função *stop* realiza a parada dos dois motores CC.
+Oposta à função *move()*, a função *stop()* realiza a parada dos dois motores CC.
 
 ##### *Parâmetros de Entrada*
 
@@ -258,15 +258,13 @@ void loop() {
 
 #### Função *rotate()*
 
-A função *rotate*, por sua vez, configura a saída da ponte H de modo a rotacionar o robô móvel tanto no sentido horário, quanto no sentido anti-horário.
+A função *rotate()*, por sua vez, configura a saída da ponte H de modo a rotacionar o robô móvel tanto no sentido horário, quanto no sentido anti-horário.
 
 ##### *Parâmetros de Entrada*
 
-* **direction**(char*): Define o sentido da rotação do robô: "clockwise", para sentido horário; "antiClockwise", para sentido anti-horário.
-
-* **pivot**(char*): Determina o tempo, em milisegundos, que o robô irá rotacionar.
-  
-* **ang**(long): 
+* **direction**(char*): define o sentido de rotação do robô móvel. Possui dois valores aceitos: *clockwise*, para sentido horário; e *antiClockwise*, para sentido anti-horário;
+• **pivot**: define o centro da rotação do robô móvel. Os valores podem ser: *center*, para que o centro da rotação seja o centro do eixo virtual do robô diferencial; *left*, que torna a roda esquerda o centro da rotação; e *right*, definindo o centro como a roda direita;
+• **ang** (float): dita o ângulo final que o robô irá rotacionar, em graus (0° a 360°), com base na posição inicial do robô e os demais parâmetros da função
 
 ##### *Retorno*
 
@@ -410,6 +408,7 @@ void loop() {
 ```
 
 ### Instalação
+
 Para que seja possível utilizar o código desenvolvido, é necessário importá-lo na pasta de biblioteca do programa [Arduino IDE](https://www.arduino.cc/en/software). Essa pasta se encontra nos seguintes caminhos, dado o sistema operacional, por
 padrão:
 
