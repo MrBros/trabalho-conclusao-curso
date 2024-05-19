@@ -428,7 +428,7 @@ Ao realizar esse procedimento, a biblioteca ficará disponível para ser utiliza
 
 O vídeo a seguir mostra os testes realizados do protótipo do robô móvel com o algoritmo de exemplo *wallTracker()*
 
-[![](https://markdown-videos-api.jorgenkh.no/youtube/dQw4w9WgXcQ)](https://youtu.be/dQw4w9WgXcQ)
+[![](https://markdown-videos-api.jorgenkh.no/youtube/3qJBHkcmXAg)](https://youtu.be/3qJBHkcmXAg)
 
 ### Referências
 
