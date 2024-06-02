@@ -157,7 +157,7 @@ void rotate(char* direction, char* pivot, float ang) {
 
       };
     }
-  } else if(direction == "antiClockwise") {
+  } else if(direction == "counterClockwise") {
     if(pivot == "center") {
       rotateRightCounter = 0;
       rotateLeftCounter  = 0;
@@ -309,7 +309,7 @@ void wallTracker() {
 
     if(distance < MAX_DISTANCE) {
     Serial.println("Lado direito Bloqueado!\nACAO: Rotaciona sobre o próprio eixo no sentido anti-horário...\n");
-      rotate("antiClockwise", "center", 90);
+      rotate("counterClockwise", "center", 90);
 
       Serial.println("Stop!");
       stop();
