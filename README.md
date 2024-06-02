@@ -4,7 +4,8 @@
 
 ### Aluno: Mário Alexandre Rodrigues
 
-### Orientadores: Profa. Dra. Kathya Linares, Prof. Dr. Jeferson Lima
+### Orientadora: Profa. Dra. Kathya Linares
+### Co-orientador: Prof. Dr. Jeferson Lima
 
 ---
 
@@ -262,7 +263,7 @@ A função *rotate()*, por sua vez, configura a saída da ponte H de modo a rota
 
 ##### *Parâmetros de Entrada*
 
-* **direction**(char*): define o sentido de rotação do robô móvel. Possui dois valores aceitos: *clockwise*, para sentido horário; e *antiClockwise*, para sentido anti-horário;
+* **direction**(char*): define o sentido de rotação do robô móvel. Possui dois valores aceitos: *clockwise*, para sentido horário; e *counterClockwise*, para sentido anti-horário;
 • **pivot**: define o centro da rotação do robô móvel. Os valores podem ser: *center*, para que o centro da rotação seja o centro do eixo virtual do robô diferencial; *left*, que torna a roda esquerda o centro da rotação; e *right*, definindo o centro como a roda direita;
 • **ang** (float): dita o ângulo final que o robô irá rotacionar, em graus (0° a 360°), com base na posição inicial do robô e os demais parâmetros da função
 
@@ -279,7 +280,7 @@ void loop() {
     // Rotaciona o robô 90º no sentido horário com o ponto fixo na roda essquerda do robô
     rotate("clockwise", "left", 90);
     // Rotaciona o robô 90º no sentido anti-horário com o ponto fixo no centro do eixo virtual do robô
-    rotate("antiClockwise", "center", 180);
+    rotate("counterClockwise", "center", 180);
 }
 ```
 
